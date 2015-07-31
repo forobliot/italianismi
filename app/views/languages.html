@@ -11,17 +11,13 @@
     		
         <ul class="quattro_colonne">
     			<li ng-repeat="language in languages">
-    				<span ng-if="!term || hasLanguage(language)" class="sel">
-    					<a href="#{{ term ? 'card/' + term.termIta + '/' + language + '/' + search : 'terms/' + language }}" ng-bind="language"></a> <!--span ng-if="hasLanguage(language)" class="label label-success">sel</span-->
+    				<span ng-if="!term || hasLanguage(language.name)" class="sel">
+    					<a href="#{{ term ? 'card/' + term.termIta + '/' + language.name + '/' + search : 'terms/' + language.name }}" ng-bind="language.name"></a> <!--span ng-if="hasLanguage(language)" class="label label-success">sel</span-->
     				</span>
-    				<span ng-if="term && !hasLanguage(language)" ng-bind="language"></span>
+    				<span ng-if="term && !hasLanguage(language.name)" ng-bind="language.name"></span>
     			</li>
     		</ul>
       </div>
       <div ng-include="'views/menu.html'"></div>
     </div>
     
-    <script type="text/javascript">
-      // http://www.amcharts.com/visited_countries/ qui trovi l'esempio per la selezione dei paesi semplice
-      // http://www.amcharts.com/demos/map-with-curved-lines/
-  </script>

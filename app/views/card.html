@@ -15,7 +15,7 @@
 			<div class="swiper-slide x" ng-repeat="term in terms">
                 <div class="swiper-container swiper-container-v" id="swiper-{{ $index }}">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide" ng-repeat="language in term.languages">
+						<div class="swiper-slide" ng-repeat="language in term.languages" ng-if="term.languageIndex === $index">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="foto">
@@ -33,9 +33,11 @@
 									<div class="col-md-5 right">
 										<label>Italianismo</label>
 										<h1><strong ng-bind="language.term"></strong></h1>
-										<p><i>† ákovita, † áquavita</i><br>ibrido [prestito fonetico gēgòngzuǒlā + rǔlào "formaggio"   </p>
+										<p><i>† ákovita, † áquavita</i></p>
+										<p ng-if="language.desc" ng-bind="language.desc"></p>
 									</div>
 								</div>
+								<div><button class="btn btn-xs" ng-click="changeLanguage(-1, term)">indietro</button> <button class="btn btn-xs" ng-click="changeLanguage(1, term)">avanti</button></div>
 							</div>
 						</div>
 					</div>

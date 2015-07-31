@@ -31,6 +31,27 @@ angular.module('italianismiApp')
 			}
 		};
 		
+		var areas = [ {	'id': 'IT',	'showAsSelected': true } ];
+		
+		if ($scope.term) {
+			// try to build areas
+			angular.forEach($scope.term.languages, function(language) {
+				var l = null;
+				angular.forEach($scope.languages, function(lItem) {
+					if (lItem.name === language.name) {
+						l = lItem;
+					}
+				});
+				if (l && l.countries) {
+					for (var i = 0; i < l.countries.length; i++) {
+						areas.push({ 'id': l.countries[i], 'showAsSelected': true });
+					}
+				}
+			});
+		}
+		
+		console.log(areas);
+		
 		var initMap = function() {
 			// http://www.amcharts.com/visited_countries/ qui trovi l'esempio per la selezione dei paesi semplice
 			// http://www.amcharts.com/demos/map-with-curved-lines/
@@ -86,17 +107,7 @@ angular.module('italianismiApp')
 						latitudes: [45.4636, 40.4300],
 						longitudes: [9.1881, -74.0000]
 					}],
-					areas :
-					[
-						{
-							'id': 'IT',
-							'showAsSelected': true
-						},
-						{
-							'id': 'JP',
-							'showAsSelected': true
-						}
-					]
+					areas : areas
 				},
 				areasSettings : {
 					  autoZoom : false,
