@@ -55,5 +55,6 @@ angular.module('italianismiApp')
 			}
 		});
 		return retTerm;
-	}
+	};
+
   });

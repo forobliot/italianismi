@@ -13,7 +13,7 @@ $sans:  'Raleway', sans-serif;
 
 $small_text: 14px;
 $title_text: 41px;
-$regular_text:18px;
+$regular_text:21px;
 
 
 $nero:#000;
@@ -24,18 +24,6 @@ $rosso: #db1933;
 $giallo: #faa61a;
 $verde: #82b518;
 
-
-
-@mixin radial-gradient($from, $to) {
-  background-color: $from;
-  background: -moz-radial-gradient(center, circle cover, $from 0%, $to 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $from), color-stop(100%, $to));
-  background: -webkit-radial-gradient(center, circle cover, $from 0%, $to 100%);
-  background: -o-radial-gradient(center, circle cover, $from 0%, $to 100%);
-  background: -ms-radial-gradient(center, circle cover, $from 0%, $to 100%);
-  background: radial-gradient(center, circle cover, $from 0%, $to 100%);
-
-}
 
 /*==========================================================================*/
 /*============================= oggetti generici ===========================*/
@@ -59,6 +47,7 @@ h1{
 }
 h2{ 
   margin-top:10px;
+  font-weight: bolder;
   font-size:$title_text;
   &:first-letter {
       text-transform: uppercase;
@@ -66,21 +55,36 @@ h2{
 }
 h3{
   margin-top:10px;
-  font-weight: normal;
+  font-weight: lighter;
+  font-size:$regular_text;
 }
 h5{
-  font-size:$small_text
+  margin-top: 0;
+  font-size:$small_text;
+  font-weight: lighter;
+  color: $grigio_scuro;
 }
 
 ul.quattro_colonne{
     columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
+    //margin-left: 20px;
+    -moz-column-count: 4;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 20px;
     li{
       border-left:1px solid;
       padding: 5px 15px;
       text-align:left;
-      overflow:hidden;
+      display: inline-table;
+      width: 100%;
+      a{
+        white-space: nowrap;
+        overflow: hidden;              /* "overflow" value must be different from "visible" */ 
+        text-overflow: ellipsis;
+        display: block;
+        max-width: 210px;
+      }
       span{
         color: $grigio_scuro !important;
         a{
@@ -91,33 +95,39 @@ ul.quattro_colonne{
             padding: 0 5px;
             content:url('../images/ico_ciliegia_small.png');
             vertical-align: -25%;
-            position:relative;
-            z-index: 10;
           }
         }
       }
     }
 }
 
-body input.form-control{
+body input.form-control, body textarea.form-control{
   font-family: $sans;
   text-transform: uppercase;
   height: auto;
+  text-align: left;
+  &.half{
+    width: 49% !important;
+    margin-left: 2%;
+    float: left;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
 }
 
 .form-control {
     display: block;
-    width: 50%;
-    margin: 30px auto 0;
+    width: 44%;
+    margin: 20px auto 0;
     height: auto;
-    padding: 5px 15px;
-    font-size: $regular_text;
-    line-height: 30px;
-    border-radius:20px;
-    color:$giallo;
+    padding: 15px 30px;
+    font-size: 21px;
+    line-height: 33px;
+    border-radius: 35px;
+    color: #faa61a;
     background-color: #fff;
     background-image: none;
-    text-align: center;
     border-color: $grigio_chiaro;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -128,45 +138,34 @@ body input.form-control{
     float: left;
     position: absolute;
     z-index: 10;
-    top: 157px;
-    margin-left: 97px;
+    top: 200px;
+    margin-left: 360px;
+    font-size: 30px;
 }
 
-.form-control:focus, textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: rgba(250, 166, 26, 0.8);
-  box-shadow: 0 1px 1px rgba(250, 166, 26, 0.075) inset, 0 0 8px rgba(250, 166, 26, 0.6);
-  //outline: 0 none;
+.container{
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+  -o-user-select: none; 
 }
 
 .bubble{
-  border-radius:50%;
-  background: $verde;
-  width: 700px;
-  height: 700px;
+  //border-radius:50%;
+  //background-color: rgba(255, 255, 255, 0.6);
+  background:url('../images/bk_sfumato.png') center;
+  //opacity: 0.7;
+  width: 800px;
   margin: auto;
-  color: $bianco; 
-  padding:30px;
+  color: $nero; 
+  padding:15px;
   margin-top: 30px;
+
 
   p {
     width: 75%;
     height: 75%;
-    margin: 30px auto 0 auto;
+    margin: 50px auto 0 auto;
   }
 }
 
@@ -176,15 +175,11 @@ input[type="color"]:focus,
 /*================================== start css =============================*/
 /*==========================================================================*/
 
-html {
-    overflow-y:scroll;
-}
-
 html, body, .ng-scope, .container-fluid, .row {
    min-height :100%;
    height: 100% !important;
    width: 100%;
-   //overflow-x: hidden;
+   overflow: hidden;
 }
 html, body {
   position: relative;
@@ -197,11 +192,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background: -webkit-radial-gradient($bianco 40%, $grigio_chiaro); /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient($bianco 40%, $grigio_chiaro); /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient($bianco 40%, $grigio_chiaro); /* For Firefox 3.6 to 15 */
-  background: radial-gradient($bianco 40%, $grigio_chiaro); /* Standard syntax */
-  background-attachment: fixed;
+  background:url('../images/bk.jpg');
 
   .container-fluid{
     margin:0;
@@ -222,14 +213,14 @@ body {
    // padding:30px;
     //  margin:-30px;
     .logo{
-      margin-top: 120px;
       margin-bottom: 60px;
     } 
 
     h1{
       width: 100%;
       float: left;
-      margin-top: 60px;
+      margin-top: 46px;
+      font-size: 28px;
     }
 
     .logo_unimi{
@@ -241,7 +232,7 @@ body {
 
     ul.lang{
       padding:0;
-      margin:60px 0 90px;
+      margin:80px 0 110px;
       color:$nero;
       li{
         display: inline;
@@ -250,12 +241,12 @@ body {
         &.ita::before{
           padding: 0 10px;
           content:url('../images/lang_ita.png');
-          vertical-align: -25%;
+          vertical-align: -15%;
         }
         &.eng::after{
           padding: 0 10px;
           content:url('../images/lang_eng.png');
-          vertical-align: -25%;
+          vertical-align: -15%;
         }
         &.active{
           font-weight: bolder;
@@ -265,11 +256,12 @@ body {
   }
 
   .sidebar{
-    width: 200px;
+    width: 225px;
     position:fixed;
     text-align: center;
     z-index: 10;
-    right: 60px;
+    right: 120px;
+    top:60px;
     margin: 0;
     //background:red;
     font-size: $small_text;
@@ -282,8 +274,9 @@ body {
     ul.lang{
       padding:0;
       margin: 0;
+      margin-top: 20px;
       color:$nero;
-      font-size: 11px;
+      font-size: $small_text;
       font-weight: normal;
       li{
         display: inline;
@@ -292,14 +285,14 @@ body {
         &.ita::before{
           padding: 0 5px;
           content:url('../images/lang_ita_small.png');
-          vertical-align: -25%;
+          vertical-align: -15%;
           width: 10px;
           height: 10px;
         }
         &.eng::after{
           padding: 0 5px;
           content:url('../images/lang_eng_small.png');
-          vertical-align: -25%;
+          vertical-align: -15%;
         }
         &.active{
           font-weight: bolder;
@@ -309,6 +302,7 @@ body {
     ul.linkbar{
       padding:0;
       margin:0;
+      font-size: 16px;
       li{
         padding:0;
         margin:0;
@@ -321,17 +315,20 @@ body {
           label{
             font-style: normal;
             font-weight: normal;
+            width: 100%;
+            line-height: 16px;
+            margin-top: 10px;
           }
         }
       }
     }
     .logo_unimi.small{
-      width: 120px;
+      width: 155px;
       position: absolute;
-      bottom: 80px;
+      bottom: 120px;
       float: none;
       left: 50%;
-      margin-left: -60px;
+      margin-left: -75px;
       img{
         width: 100%;
         height: auto;
@@ -369,7 +366,7 @@ body {
     .swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #fff;
+      background: transparent;
       /* Center slide text vertically */
       display: -webkit-box;
       display: -ms-flexbox;
@@ -386,12 +383,12 @@ body {
       height: 100%;
       }
       .swiper-container-v {
-          background: #eee;
+          background: transparent;
       }
   }
 
   .rosso, .giallo, .verde{
-    padding:30px;
+    padding:60px;
   }
 
   .rosso{
@@ -399,9 +396,10 @@ body {
       color: $rosso;
     }
     ul.quattro_colonne{
-      margin-top: 40px;
+      margin-top: 20px;
       li{
         border-color: $rosso;
+        margin-top: -3px;
       }
     }
   }
@@ -411,66 +409,210 @@ body {
     header{
       position:fixed;
       width: 100%;
-      left:0;
+      left:-15px;
       top:0;
-      padding-top:30px;
-      background: -webkit-radial-gradient($bianco 40%, $grigio_chiaro); /* Safari 5.1 to 6.0 */
-      background: -o-radial-gradient($bianco 40%, $grigio_chiaro); /* For Opera 11.6 to 12.0 */
-      background: -moz-radial-gradient($bianco 40%, $grigio_chiaro); /* For Firefox 3.6 to 15 */
-      background: radial-gradient($bianco 40%, $grigio_chiaro); /* Standard syntax */
-      background-attachment: fixed;
+      padding-top:60px;
     }
     h3{
       color: $giallo;
     }
     .box_parole{
-      margin-top:240px;
+      margin-top:210px;
       margin-bottom: 200px;
+      height: 650px; 
+      overflow-y:auto;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      &::before{
+        content:url('../images/row_fade_top.png');
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        margin-left: -550px;
+      }
+      &::after{
+        content: url("../images/row_fade.png");
+        position: absolute;
+        margin: 0 auto;
+        bottom: 185px;
+        left: 50%;
+        margin-left: -550px;
+      }
       ul.quattro_colonne{
         li{
           border-color: $giallo;
         }
       }
     }
+    .form-control:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {   
+      border-color: rgba(250, 166, 26, 0.8);
+      box-shadow: 0 1px 1px rgba(250, 166, 26, 0.075) inset, 0 0 8px rgba(250, 166, 26, 0.6);
+    }
+  }
+
+  .verde{
+    font-family: $sans;
+    form{
+      margin-left: 30px;
+    }
+    h3{
+      color: $verde;
+    }
+    h2{ 
+      font-family: $serif;}
+    p{
+      margin: 30px auto;
+      width: 80%;
+      line-height: 1em;
+    }
+    input, textarea{
+      width: 100% !important;
+      font-family: $sans;
+      color: $verde;
+    }
+    textarea{
+      height: 200px;
+    }
+    .form-control:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {   
+      border-color: $verde;
+      box-shadow: 0 1px 1px rgba(130, 181, 24, 0.075) inset, 0 0 8px rgba(130, 181, 24, 0.075);
+      color: $verde;
+    }
+
+    .buttons_box{
+      width: 50%;
+      float: right;
+    }
+
+    .nuova_parola{
+
+    }
+
+    button{
+      float: right;
+      text-transform: uppercase;
+      margin-top: 30px;
+
+      &.attivo{
+        background:$verde;
+        color: $bianco;
+      }
+      &.inattivo{
+        background:$grigio_scuro;
+        color: $bianco;
+        margin-right:30px;
+      }
+    }
+
   }
 
   .mappa{
     width: 100%;
-    height: 600px;
+    height: 550px;
     background:tranparent;
     a{color:$bianco !important; font-size:1px !important;}
   }
 }
 
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
+.swiper-wrapper{
+  z-index: 10;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+.swiper-button-prev {
+    //background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org…9.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    left: 400px;
+    right: auto;
+    top: 12%;
+    z-index: 2;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.swiper-button-next {
+    //background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org…L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    right: 400px;
+    left: auto;
+    top: 12%;
+    z-index: 2;
+}
+
+/* Parallax scroll*/
+
+#parallax {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: absolute;
+  color: black;
+  width: 100%;
+  background-color: transparent;
+  cursor: move;
+  z-index: 4;
+  margin-top: 200px 
+
+}
+#layer1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: absolute;
+  color: black;
+  width: 100%;
+  cursor: move;
+  background: transparent;
+  z-index: 3;
+}
+#layer2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: absolute;
+  color: black;
+  width: 100%;
+  background: transparent url('../images/vivit_layer_1.png') repeat-y 0 0;
+  cursor: move;
+  z-index: 2;
+}
+#layer3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: absolute;
+  color: black;
+  width: 100%;
+  background: transparent url('../images/vivit_layer_1.png') repeat-y 0 0;
+  cursor: move;
+  z-index: 1;
+}
+.panel {
+  /*float: left;*/
+  margin: 0px -30px;
+  padding: 0px;
+  width: 100%;
+  min-height: 100%;
+  background-color: transparent;
+  box-shadow:0 !important;
+  border:0 !important;
+}
+
+#balloon1 {
+  position: absolute;
+  top: -20px;
+  left: 200px;
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+  background: transparent url('../images/pict_anguria.png') no-repeat;
+}
+#balloon2 {
+  position: absolute;
+  top: 600px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+  background: transparent url('../images/pict_piatto.png') no-repeat; 
+}
+#balloon3 {
+  position: absolute;
+  top: 1100px;
+  left: 300px;
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+  background: transparent url('../images/pict_frusta.png') no-repeat; 
 }

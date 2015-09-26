@@ -1,27 +1,57 @@
-    <div class="pure-g cover" id="content">
-      <img id="0" src="http://ariya.github.io/kinetic/5/images/winter.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(0px) translateX(0px) translateZ(0px) rotateY(0deg); z-index: 0; opacity: 1;">
-      <img id="1" src="http://ariya.github.io/kinetic/5/images/14.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(110px) translateZ(-150px) rotateY(-60deg); z-index: -1; opacity: 1;">
-      <img id="2" src="http://ariya.github.io/kinetic/5/images/cloudatlas.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(210px) translateZ(-150px) rotateY(-60deg); z-index: -2; opacity: 1;">
-      <img id="3" src="http://ariya.github.io/kinetic/5/images/dancewithdragons.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(310px) translateZ(-150px) rotateY(-60deg); z-index: -3; opacity: 1;">
-      <img id="4" src="http://ariya.github.io/kinetic/5/images/fiftyshades.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(410px) translateZ(-150px) rotateY(-60deg); z-index: -4; opacity: 1;">
-      <img id="5" src="http://ariya.github.io/kinetic/5/images/greatgatsby.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(-410px) translateZ(-150px) rotateY(60deg); z-index: -4; opacity: 1;">
-      <img id="6" src="http://ariya.github.io/kinetic/5/images/inferno.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(-310px) translateZ(-150px) rotateY(60deg); z-index: -3; opacity: 1;">
-      <img id="7" src="http://ariya.github.io/kinetic/5/images/koban.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(-210px) translateZ(-150px) rotateY(60deg); z-index: -2; opacity: 1;">
-      <img id="8" src="http://ariya.github.io/kinetic/5/images/renegade.jpg" style="transform: translateX(860px) translateY(375.5px) translateX(-110px) translateZ(-150px) rotateY(60deg); z-index: -1; opacity: 1;">
-  </div>
-      
-      <!--div class="row verde">
+<div class="row verde">
         <div class="col-md-offset-2 col-md-8">
         <h5>Parole italiane della cucina nelle lingue del mondo</h5>
         <h3>Vivit</h3>
          <h2>Antipasto per cominciare</h2>
-         <div class="bubble">
-          <img class="logo_vivit" src="images/verde_vivit_logo.png">
-          <h1>VI</h1>
-          <p>Gli italianismi nel mondo costituiscono un fenomeno di grande ampiezza, che registra, secondo le indagini più recenti, oltre ventimila parole e interessa un numero non definito, ma comunque alto, di lingue. La maggior parte degli italianismi, cioè delle parole italiane più diffuse all’estero, viene dal mondo della cultura.           </p>
-         </div>
         </div>
         <div ng-include="'views/menu.html'"></div>
-      </div-->
+      </div>
 
-	
+<div class="container" onselectstart="return false;">
+  <div id="parallax">
+    <div class="panel">    
+      <div class="bubble">
+        <h1>I</h1>
+        <p>Gli italianismi nel mondo costituiscono un fenomeno di grande ampiezza, che registra, secondo le indagini più recenti, oltre ventimila parole e interessa un numero non definito, ma comunque alto, di lingue. La maggior parte degli italianismi, cioè delle parole italiane più diffuse all'estero, viene dal mondo della cultura.</p>
+      </div>
+      <div class="bubble">
+        <h1>II</h1>
+        <p>Sono molto diffuse anche le parole della cucina, come mostra il numero degli italianismi relativi all'alimentazione entrati in inglese nel Novecento: nella prima metà del secolo rappresentano infatti un quarto del totale, sono circa la metà nel periodo successivo e giungono a superare il 70% verso la fine.</p>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="container" onselectstart="return false;">
+  <div id="layer1">
+    <div class="panel">
+      <div id="balloon1"></div>
+      <div id="balloon2"></div>
+      <div id="balloon3"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container" onselectstart="return false;">
+  <div id="layer2"> <!--cloud1.png layer-->
+    <div class="panel"></div>
+  </div>
+</div>
+
+<div class="container" onselectstart="return false;">
+  <div id="layer3"> <!--cloud2.png layer-->
+    <div class="panel"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).bind("dragstart", function() { return false; });
+ 
+  $(function() {
+    $("#parallax").parallaxSwipe( { HORIZ: false, LAYER:[.8,4.2] });
+    var layerHeight = $('#parallax').parallaxSwipe.getSize();
+    $('#layer2').css('height',layerHeight+200);
+    $('#layer3').css('height',layerHeight);
+  });
+
+</script>
