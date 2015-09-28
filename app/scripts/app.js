@@ -163,8 +163,8 @@ var languageMap= {
 		eng: 'Add a word foreign word'
 	},
 	formText: {
-		ita: 'Lo scopo del progetto “Oltre pizza e spaghetti” è arricchire sempre di più la documentazione relativa alle parole italiane della cucina che sono state adottate da altre lingue nel mondo. Se conosci parole che non abbiamo registrato, scrivile nel campo sottostante, parteciperai con il tuo contributo a questo grande progetto di valorizzazione della lingua italiana e della sua cultura enogastronomica nel mondo. Grazie!',
-		eng: 'The purpose of the project “Oltre pizza e spaghetti” is to thoroughly compile Italian words related to cuisine that are used in other languages. If you know of words which do not appear in our listing, write them in the field below. You can participate in this project to promote Italian culinary language and culture in the world. Thank you!'
+		ita: 'Lo scopo del progetto “Oltre pizza e spaghetti” è arricchire sempre di più la documentazione relativa alle parole italiane della cucina che sono state adottate da altre lingue nel mondo.<br/>Se conosci parole che non abbiamo registrato, scrivile nel campo sottostante, parteciperai<br/>con il tuo contributo a questo grande progetto di valorizzazione della lingua italiana<br/>e della sua cultura enogastronomica nel mondo. Grazie!',
+		eng: 'The purpose of the project “Oltre pizza e spaghetti” is to thoroughly compile Italian words related to cuisine that are used in other languages.<br/>If you know of words which do not appear in our listing, write them in the field below. You can participate in this project to promote Italian culinary language and culture in the world. Thank you!'
 	},
 	formPh1: {
 		ita: 'Nome / Cognome',
@@ -203,7 +203,7 @@ var languageMap= {
 		eng: 'Fill in all fields before sending'
 	},
 	confirmText1: {
-		ita: 'Grazie $$name.<br>The word <span>$$term</span> è stata inserita<br> fra gli italianismi in lingua <span>$$language</span>',
+		ita: 'Grazie $$name.<br>La parola <span>$$term</span> è stata inserita<br> fra gli italianismi in lingua <span>$$language</span>',
 		eng: 'Thank you $$name,<br> $$term has been added to Italianisms in the $$language language'
 	},
 	confirmText2: {
