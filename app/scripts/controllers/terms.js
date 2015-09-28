@@ -28,10 +28,12 @@ angular.module('italianismiApp')
 				return lowerStr.indexOf(expected.toLowerCase()) === 0;
 			};
 			
-			$('#search').bind('keyup', function() { if (!$scope.search) { $scope.search = {}; } $scope.search.termIta = $('#search').val().toString(); $scope.$digest();  });
 			$scope.canShow = true;
 		  }
 	  };
+	  
+	  $('body').unbind('keyup');
+	  $('body').bind('keyup', function() {  if (!$scope.search) { $scope.search = {}; } $scope.search.termIta = $('#search').val().toString(); $scope.$digest(); } );
 	  
 	  wait();
   });
