@@ -21,8 +21,10 @@ angular.module('italianismiApp')
 	$scope.submitted = false;
 	$scope.isValid = true;
 
+	$('input').bind('keyup', function() { $scope.$digest(); });
+	
 	function checkValid() {
-		return $scope.name.trim() && $scope.email.trim() && $scope.term.trim() && $scope.language.trim() && $scope.text.trim();
+		return $('#textinput').val().trim() && $('#email').val().trim() && $('#NuovaParola').val().trim() && $('#Lingua').val().trim() && $('#Significato').val().trim();
 	};
 	
 	$scope.submit = function() {
@@ -31,11 +33,11 @@ angular.module('italianismiApp')
 			$scope.submitText = $rootScope.languageMap.formWait[$rootScope.languageSel];
 			$scope.submitted = true;
 			var data = {
-				name: $scope.name,
-				email: $scope.email,
-				term: $scope.term,
-				language: $scope.language,
-				text: $scope.text,
+				name: $('#textinput').val(),
+				email: $('#email').val(),
+				term: $('#NuovaParola').val(),
+				language: $('#Lingua').val(),
+				text: $('#Significato').val(),
 			};
 			$http({
 				method: 'POST',
